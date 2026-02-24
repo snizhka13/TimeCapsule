@@ -14,14 +14,12 @@ const ViewCapsulesPage = () => {
   const [activeId, setActiveId] = useState(capsules[0]?._id);
 
 
-  // 🔹 Завантаження капсул
   useEffect(() => {
     const fetchCapsules = async () => {
       try {
         const res = await api.get("/capsules", {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
-        // додаємо залишковий час у state
         const capsulesWithTime = res.data.map((c) => ({
           ...c,
           remaining: new Date(c.openDate) - new Date(),
@@ -38,7 +36,6 @@ const ViewCapsulesPage = () => {
     fetchCapsules();
   }, [accessToken]);
 
-  // 🔹 Live countdown
   useEffect(() => {
     const interval = setInterval(() => {
       setCapsules((prev) =>

@@ -34,12 +34,10 @@ const CreateCapsulePage = () => {
       );
 
       setFeedback("Капсула створена успішно!");
-      // Очистка полів
       setTitle("");
       setMessage("");
       setOpenDate("");
 
-      // Можна редірект на Dashboard після створення
       setTimeout(() => {
         navigate("/dashboard");
       }, 1000);
