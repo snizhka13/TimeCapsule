@@ -44,7 +44,7 @@ exports.register = async (req, res) => {
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: false, // true у продакшені
+      secure: false, 
       sameSite: "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
@@ -106,7 +106,7 @@ exports.refresh = async (req, res) => {
     if (!user || user.refreshToken !== refreshToken)
       return res.status(403).json({ message: "Invalid refresh token" });
 
-    // ROTATION
+  
     const newAccessToken = generateAccessToken(user._id);
     const newRefreshToken = generateRefreshToken(user._id);
 

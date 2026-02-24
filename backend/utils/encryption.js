@@ -2,7 +2,7 @@ const crypto = require("crypto");
 
 const algorithm = "aes-256-cbc";
 const key = Buffer.from(process.env.ENCRYPTION_KEY);
-const iv = Buffer.alloc(16, 0); // простий варіант для демо
+const iv = Buffer.alloc(16, 0); 
 
 function encrypt(text) {
   const cipher = crypto.createCipheriv(algorithm, key, iv);

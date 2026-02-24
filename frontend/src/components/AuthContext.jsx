@@ -8,11 +8,10 @@ export  const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // 🔄 REFRESH при старті
 useEffect(() => {
   const checkAuth = async () => {
     try {
-      const res = await api.post("/auth/refresh"); // кукі автоматично відправиться
+      const res = await api.post("/auth/refresh");
       setAccessToken(res.data.accessToken);
       setIsAuthenticated(true);
     } catch (err) {
@@ -28,21 +27,18 @@ useEffect(() => {
 }, []);
 
 
-  // 🔐 LOGIN
   const login = async (email, password) => {
     const res = await api.post("/auth/login", { email, password });
     setAccessToken(res.data.accessToken);
     setIsAuthenticated(true);
   };
 
-  // 📝 REGISTER
   const register = async (email, password) => {
     const res = await api.post("/auth/register", { email, password });
     setAccessToken(res.data.accessToken);
     setIsAuthenticated(true);
   };
-
-  // 🚪 LOGOUT
+  
   const logout = async () => {
     await api.post("/auth/logout");
     setAccessToken(null);

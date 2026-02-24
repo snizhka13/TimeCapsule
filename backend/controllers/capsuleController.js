@@ -1,7 +1,6 @@
 const Capsule = require("../models/Capsule");
 const { encrypt, decrypt } = require("../utils/encryption");
 
-// CREATE
 exports.createCapsule = async (req, res) => {
   try {
     const { title, message, openDate } = req.body;
@@ -9,7 +8,7 @@ exports.createCapsule = async (req, res) => {
     const encryptedMessage = encrypt(message);
 
     const capsule = new Capsule({
-      userId: req.user.id, // поки що тестово
+      userId: req.user.id, 
       title,
       encryptedMessage,
       openDate
@@ -23,7 +22,6 @@ exports.createCapsule = async (req, res) => {
   }
 };
 
-// GET ALL
 exports.getCapsules = async (req, res) => {
   try {
     const capsules = await Capsule.find({ userId: req.user.id })
@@ -35,7 +33,6 @@ exports.getCapsules = async (req, res) => {
   }
 };
 
-// OPEN CAPSULE
 exports.openCapsule = async (req, res) => {
   try {
     const capsule = await Capsule.findOne({
