@@ -41,6 +41,7 @@ const CapsuleAnimationPage = () => {
 
           <Model
             position={[0, -2, 0]}
+            rotation={[0, 0, 0]}
             play={playAnimation}
             onFinished={() => setAnimationFinished(true)}
           />
