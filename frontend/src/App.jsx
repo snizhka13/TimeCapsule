@@ -27,7 +27,7 @@ function App() {
 
           <Route
             path="*"
-            element={<Navigate to="/dashboard" replace />} // перенаправляємо після логіну
+            element={<Navigate to="/dashboard" replace />} 
           />
 
           <Route
