@@ -20,10 +20,16 @@ const ViewCapsulesPage = () => {
         const res = await api.get("/capsules", {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
-        const capsulesWithTime = res.data.map((c) => ({
+        const capsulesWithTime = res.data.map((c) => {
+        const localOpenDate = new Date(c.openDate); 
+        const remaining = localOpenDate - new Date(); 
+
+        return {
           ...c,
-          remaining: new Date(c.openDate) - new Date(),
-        }));
+          openDate: localOpenDate, 
+          remaining,
+        };
+      });
         setCapsules(capsulesWithTime);
       } catch (err) {
         console.error(err);
@@ -36,15 +42,18 @@ const ViewCapsulesPage = () => {
     fetchCapsules();
   }, [accessToken]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCapsules((prev) =>
-        prev.map((c) => {
-          const diff = new Date(c.openDate) - new Date();
-          return { ...c, remaining: diff };
-        })
-      );
-    }, 1000);
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCapsules((prev) =>
+      prev.map((c) => {
+        const diff = c.openDate - new Date(); 
+        return { ...c, remaining: diff };
+      })
+    );
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, []);
 
     return () => clearInterval(interval);
   }, []);
