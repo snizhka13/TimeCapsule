@@ -51,7 +51,22 @@ const ViewCapsulesPage = () => {
 
   if (loading) return <p>Завантаження капсул...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
-  if (capsules.length === 0) return <p>Капсул ще немає. Створіть першу!</p>;
+  if (capsules.length === 0) {
+    return (
+      <div className="no-capsules">
+        <p className="no-capsules-text">
+          Капсул ще немає. Створіть першу!
+        </p>
+
+        <button
+          className="back-btn"
+          onClick={() => navigate("/dashboard")}
+        >
+          ←
+        </button>
+      </div>
+    );
+  }
 
   const canOpen = (remaining) => remaining <= 0;
 

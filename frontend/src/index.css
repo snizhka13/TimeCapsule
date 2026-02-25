@@ -311,6 +311,19 @@ button:disabled {
   transform: none;
 }
 
+.no-capsules {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.no-capsules-text {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
 .capsules-page {
   display: flex;
   flex-direction: column; 
