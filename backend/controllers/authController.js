@@ -145,7 +145,13 @@ exports.logout = async (req, res) => {
     }
   }
 
-  res.clearCookie("refreshToken");
+  res.clearCookie("refreshToken", {
+  httpOnly: true,
+  secure: true,
+  sameSite: "none",
+  domain: "timecapsule-99hm.onrender.com",
+  path: "/"
+});
   res.json({ message: "Logged out" });
 };
 
