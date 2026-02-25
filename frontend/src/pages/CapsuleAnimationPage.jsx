@@ -46,7 +46,10 @@ const CapsuleAnimationPage = () => {
             onFinished={() => setAnimationFinished(true)}
           />
 
-          <OrbitControls enableZoom={false} />
+          <OrbitControls 
+            enableZoom={true} 
+            target={[0, -2, 0]}
+          />
           </Suspense>
         </Canvas>
       </div>
