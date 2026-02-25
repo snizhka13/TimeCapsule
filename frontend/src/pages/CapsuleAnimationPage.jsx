@@ -28,7 +28,7 @@ const CapsuleAnimationPage = () => {
             color="#ffffff"
           />
         )}
-          <ambientLight intensity={0.5} />
+          <ambientLight intensity={1} />
           <directionalLight position={[5, 5, 5]} />
 
           <Model
