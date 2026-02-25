@@ -11,7 +11,7 @@ exports.createCapsule = async (req, res) => {
       userId: req.user.id, 
       title,
       encryptedMessage,
-      openDate
+      openDate: new Date(openDate)
     });
 
     await capsule.save();
