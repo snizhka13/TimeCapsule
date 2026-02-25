@@ -30,7 +30,7 @@ export function Model({ play, onFinished, ...props }) {
 
   return (
     <group ref={group} {...props}>
-      <primitive object={scene} scale={1} />
+      <primitive object={scene} scale={1.3} />
     </group>
   );
 }
