@@ -1,8 +1,9 @@
 import { Canvas } from "@react-three/fiber";
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, Suspense } from "react"; 
 import { Model } from "../components/Model";
 import { OrbitControls, Sparkles, Environment } from "@react-three/drei";
+import * as THREE from "three";
 
 const CapsuleAnimationPage = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const CapsuleAnimationPage = () => {
           gl={{ 
             alpha: true, 
             antialias: true,
-            toneMapping: THREE.ACESFilmicToneMapping, // Робить світло більш реалістичним
+            toneMapping: THREE.ACESFilmicToneMapping, 
             outputColorSpace: THREE.SRGBColorSpace 
           }}
           onFinished={() => setAnimationFinished(true)}
@@ -35,9 +36,7 @@ const CapsuleAnimationPage = () => {
         )}
           <Environment preset="city" /> 
           <ambientLight intensity={0.5} />
-          {/* Основне світло */}
           <directionalLight position={[5, 5, 5]} intensity={1.5} castShadow />
-          {/* Додаткове світло для об'єму (з іншого боку) */}
           <pointLight position={[-5, 2, -5]} intensity={1} color="#44aaff" />
 
           <Model
