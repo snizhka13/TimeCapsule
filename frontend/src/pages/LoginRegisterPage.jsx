@@ -63,7 +63,7 @@ const LoginRegisterPage = () => {
         style={{ display: "block", marginBottom: "10px", width: "100%" }}
       />
 
-      {message && <p style={{ color: "red" }}>{message}</p>}
+      {message && <p style={{ color: "white" }}>{message}</p>}
 
       <div className="button-group">
         <button onClick={handleLogin} disabled={isLoading}>
