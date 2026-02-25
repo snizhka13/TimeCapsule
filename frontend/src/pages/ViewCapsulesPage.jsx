@@ -42,18 +42,15 @@ const ViewCapsulesPage = () => {
     fetchCapsules();
   }, [accessToken]);
 
-useEffect(() => {
-  const interval = setInterval(() => {
-    setCapsules((prev) =>
-      prev.map((c) => {
-        const diff = c.openDate - new Date(); 
-        return { ...c, remaining: diff };
-      })
-    );
-  }, 1000);
-
-  return () => clearInterval(interval);
-}, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCapsules((prev) =>
+        prev.map((c) => {
+          const diff = c.openDate - new Date(); 
+          return { ...c, remaining: diff };
+        })
+      );
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
