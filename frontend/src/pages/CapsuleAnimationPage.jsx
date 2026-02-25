@@ -35,12 +35,12 @@ const CapsuleAnimationPage = () => {
           />
         )}
           <Environment preset="city" /> 
-          <ambientLight intensity={0.5} />
+          <ambientLight intensity={0.6} />
           <directionalLight position={[5, 1, 5]} intensity={1.5} castShadow />
           <pointLight position={[-5, 2, -5]} intensity={1} color="#44aaff" />
 
           <Model
-            position={[0, 0, 0]}
+            position={[0, -2, 0]}
             play={playAnimation}
             onFinished={() => setAnimationFinished(true)}
           />
