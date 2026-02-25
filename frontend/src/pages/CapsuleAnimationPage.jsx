@@ -41,7 +41,7 @@ const CapsuleAnimationPage = () => {
 
           <Model
             position={[0, -2, 0]}
-            rotation={[-1, 0, 0]}
+            rotation={[THREE.MathUtils.degToRad(-10), 0, 0]} 
             play={playAnimation}
             onFinished={() => setAnimationFinished(true)}
           />
