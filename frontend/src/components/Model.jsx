@@ -5,7 +5,7 @@ import * as THREE from "three";
 export function Model({ play, onFinished, ...props }) {
   const group = useRef();
   const hasPlayed = useRef(false);
-  const { scene, animations } = useGLTF("/TimeCapsule.glb");
+  const { scene, animations } = useGLTF("/TimeCapsuleLetter.glb");
   const { actions, mixer } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -34,4 +34,4 @@ export function Model({ play, onFinished, ...props }) {
     </group>
   );
 }
-useGLTF.preload("/TimeCapsule.glb");
+useGLTF.preload("/TimeCapsuleLetter.glb");
