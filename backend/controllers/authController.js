@@ -45,7 +45,7 @@ exports.register = async (req, res) => {
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       secure: true, 
-      sameSite: "lax",
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
@@ -76,8 +76,8 @@ exports.login = async (req, res) => {
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: "strict",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
@@ -115,8 +115,8 @@ exports.refresh = async (req, res) => {
 
     res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: "strict",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
