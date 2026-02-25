@@ -1,9 +1,8 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Model } from "../components/Model";
-import { Sparkles } from "@react-three/drei";
+import { OrbitControls, Sparkles, Environment } from "@react-three/drei";
 
 const CapsuleAnimationPage = () => {
   const { id } = useParams();
@@ -15,10 +14,16 @@ const CapsuleAnimationPage = () => {
    <div className="capsule3d-page">
       <div className="canvas-wrapper">
         <Canvas
-          camera={{ position: [0, 5, 6], fov: 55 }}
-          gl={{ alpha: true }}
+          camera={{ position: [0, 5, 6], fov: 55 }} 
+          gl={{ 
+            alpha: true, 
+            antialias: true,
+            toneMapping: THREE.ACESFilmicToneMapping, // Робить світло більш реалістичним
+            outputColorSpace: THREE.SRGBColorSpace 
+          }}
           onFinished={() => setAnimationFinished(true)}
         >
+        <Suspense fallback={null}>
         {playAnimation && !animationFinished && (
          <Sparkles
             count={40}
@@ -28,8 +33,12 @@ const CapsuleAnimationPage = () => {
             color="#ffffff"
           />
         )}
-          <ambientLight intensity={1} />
-          <directionalLight position={[5, 5, 5]} />
+          <Environment preset="city" /> 
+          <ambientLight intensity={0.5} />
+          {/* Основне світло */}
+          <directionalLight position={[5, 5, 5]} intensity={1.5} castShadow />
+          {/* Додаткове світло для об'єму (з іншого боку) */}
+          <pointLight position={[-5, 2, -5]} intensity={1} color="#44aaff" />
 
           <Model
             position={[0, -2, 0]}
@@ -38,6 +47,7 @@ const CapsuleAnimationPage = () => {
           />
 
           <OrbitControls enableZoom={false} />
+          </Suspense>
         </Canvas>
       </div>
       <button className="capsule-action-btn"
