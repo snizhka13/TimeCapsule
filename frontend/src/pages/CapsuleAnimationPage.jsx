@@ -40,7 +40,7 @@ const CapsuleAnimationPage = () => {
           <pointLight position={[-5, 2, -5]} intensity={1} color="#44aaff" />
 
           <Model
-            position={[0, -2, 0]}
+            position={[0, 0, 0]}
             play={playAnimation}
             onFinished={() => setAnimationFinished(true)}
           />
