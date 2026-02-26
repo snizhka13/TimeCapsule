@@ -22,13 +22,14 @@ const CreateCapsulePage = () => {
     setIsLoading(true);
     setFeedback("");
 
-    const localDate = new Date(openDate);
-    const utcDate = new Date(localDate.getTime() - localDate.getTimezoneOffset() * 60000);
+    const local = new Date(openDate);
+
+    const utc = new Date(local.getTime() - local.getTimezoneOffset() * 60000);
 
     try {
       await api.post(
         "/capsules",
-        { title, message, openDate:utcDate.toISOString(), },
+        { title, message, openDate: utc.toISOString(), },
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
