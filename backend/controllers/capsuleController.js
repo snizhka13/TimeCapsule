@@ -16,7 +16,6 @@ exports.createCapsule = async (req, res) => {
     });
 
     await capsule.save();
-    console.log("Saved:", new Date(openDate).toISOString());
     res.status(201).json(capsule);
   } catch (error) {
     res.status(500).json({ message: error.message });
