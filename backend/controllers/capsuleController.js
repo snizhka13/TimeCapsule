@@ -8,15 +8,11 @@ exports.createCapsule = async (req, res) => {
     const encryptedMessage = encrypt(message);
     const localDate = new Date(openDate);
 
-    const correctedDate = new Date(
-      localDate.getTime() - localDate.getTimezoneOffset() * 60000
-    );
-
     const capsule = new Capsule({
       userId: req.user.id,
       title,
       encryptedMessage,
-      openDate: correctedDate
+      openDate: localDate
     });
 
     await capsule.save();
