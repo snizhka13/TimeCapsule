@@ -8,15 +8,15 @@ const DashboardPage = () => {
   return (
    <div className="menu-container">
     <Link to="/create-capsule" className="menu-link">
-      Create Capsule
+      Створити капсулу
     </Link>
 
     <Link to="/view-capsules" className="menu-link">
-      View Capsules
+      Переглянути капсули
     </Link>
 
   <button onClick={logout} className="logout-btn">
-    Logout
+    Вийти
   </button>
 </div>
   );

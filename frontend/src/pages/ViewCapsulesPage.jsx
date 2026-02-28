@@ -61,7 +61,7 @@ const ViewCapsulesPage = () => {
     return (
       <div className="no-capsules">
         <p className="no-capsules-text">
-          Капсул ще немає. Створіть першу!
+          Капсул ще немає. Створіть першу..
         </p>
 
         <button
